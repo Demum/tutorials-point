@@ -7,18 +7,18 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class SeleniumDemo {
+public class SeleniumDemoTest {
     static WebDriver driver;
 
     @BeforeClass
-    public static void initDriver() {
+    public static void webDriverGetUrlOpensite() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://www.tutorialspoint.com/");
     }
 
     @Test
-  public  void verifyTitle() {
+  public  void getTitleInOpenedsiteVerifyWithText() {
 
         System.out.println("In verify title test case");
         String title = driver.getTitle();
@@ -26,15 +26,15 @@ public class SeleniumDemo {
 
     }
         @Test
-        public void verifyingHeading () {
+        public void getHeadingVerifyWithText () {
             System.out.println("In verify Heading Text Above Search Test Case");
             String expectedSearchHeading = "Simply Easy Learning at your fingertips";
-            String actualHeading = driver.findElement(By.xpath("/html/body/main/section[1]/div/div/div[1]/h1")).getText();
+            String actualHeading = driver.findElement(By.xpath("//h1")).getText();
 assertEquals(expectedSearchHeading,actualHeading);
 
         }
         @AfterClass
-        public static void tearDown() {
+        public static void afterWorkCloseDriver() {
             driver.quit();
         }
 
